@@ -9,8 +9,6 @@ if (isset($_POST['save_student'])) {
     //Validate the name
     if (empty($_POST['name'])) {
         $_SESSION['nameErr'] = 'Name is required';
-        //Destroy the session
-
     } else {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
     }
