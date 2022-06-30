@@ -5,6 +5,26 @@ require 'dbcon.php';
 $name = $email = $phone = $course = '';
 $nameErr = $emailErr = $phoneErr = $courseErr = '';
 
+
+if (isset($_POST['update_student'])) {
+    $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $course = mysqli_real_escape_string($conn, $_POST['course']);
+
+
+    $sql = "UPDATE Students SET name = '$name', email = '$email', phone = '$phone', course = '$course' WHERE id = '$student_id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $_SESSION['message'] = "Student Updated Successfully";
+        header("location: index.php");
+    } else {
+        $_SESSION['message'] = "Student Update Failed";
+        header("location: index.php");
+    }
+}
+
 if (isset($_POST['save_student'])) {
     //Validate the name
     if (empty($_POST['name'])) {

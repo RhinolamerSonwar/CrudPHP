@@ -1,4 +1,5 @@
-<?php require 'dbcon.php'; ?>
+<?php session_start();
+require 'dbcon.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +11,8 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-4">
+        <?php include('message.php'); ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
