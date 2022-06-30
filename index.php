@@ -46,7 +46,7 @@ require 'dbcon.php'; ?>
                                         echo '<td>' . $row['phone'] . '</td>';
                                         echo '<td>' . $row['course'] . '</td>';
                                         echo '<td>
-                                            <a href="student-edit.php?id=' . $row['id'] . '" class="btn btn-info">view</a>
+                                            <a href="student-view.php?id=' . $row['id'] . '" class="btn btn-info">View</a>
                                             <a href="student-edit.php?id=' . $row['id'] . '" class="btn btn-primary">Edit</a>
                                             <a href="student-delete.php?id=' . $row['id'] . '" class="btn btn-danger">Delete</a>
                                         </td>';
