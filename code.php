@@ -1,11 +1,26 @@
 <?php
 session_start();
-
 require 'dbcon.php';
 $name = $email = $phone = $course = '';
 $nameErr = $emailErr = $phoneErr = $courseErr = '';
 
+//Delete Student
+if (isset($_POST['delete_student'])) {
+    $student_id = mysqli_real_escape_string($conn, $_POST['delete_student']);
+    $sql = "DELETE FROM Students WHERE id = '$student_id' ";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['message'] = "Student Deleted Successfully";
+        header('Location: index.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Student Not Deleted";
+        header('Location: index.php');
+        exit(0);
+    }
+}
 
+
+//Update Student
 if (isset($_POST['update_student'])) {
     $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
     $name = mysqli_real_escape_string($conn, $_POST['name']);

@@ -38,17 +38,21 @@ require 'dbcon.php'; ?>
                                 $query = "SELECT * FROM Students";
                                 $result = mysqli_query($conn, $query);
                                 if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
+                                    while ($sudent = mysqli_fetch_assoc($result)) {
                                         echo '<tr>';
-                                        echo '<td>' . $row['id'] . '</td>';
-                                        echo '<td>' . $row['name'] . '</td>';
-                                        echo '<td>' . $row['email'] . '</td>';
-                                        echo '<td>' . $row['phone'] . '</td>';
-                                        echo '<td>' . $row['course'] . '</td>';
+                                        echo '<td>' . $sudent['id'] . '</td>';
+                                        echo '<td>' . $sudent['name'] . '</td>';
+                                        echo '<td>' . $sudent['email'] . '</td>';
+                                        echo '<td>' . $sudent['phone'] . '</td>';
+                                        echo '<td>' . $sudent['course'] . '</td>';
                                         echo '<td>
-                                            <a href="student-view.php?id=' . $row['id'] . '" class="btn btn-info">View</a>
-                                            <a href="student-edit.php?id=' . $row['id'] . '" class="btn btn-primary">Edit</a>
-                                            <a href="student-delete.php?id=' . $row['id'] . '" class="btn btn-danger">Delete</a>
+                                            <a href="student-view.php?id=' . $sudent['id'] . '" class="btn btn-info btn-sm">View</a>
+                                            <a href="student-edit.php?id=' . $sudent['id'] . '" class="btn btn-primary btn-sm">Edit</a>
+                                            <form action = "code.php" method = "POST" class="d-inline">                                                
+                                                <button type="submit" name="delete_student" value="' . $sudent['id'] . '" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>   
+                                    
+                                            
                                         </td>';
                                         echo '</tr>';
                                     }
